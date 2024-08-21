@@ -53,29 +53,48 @@ const Button = styled.button`
   }
 `;
 
-const ApplicationForm = () => {
+const AddProductForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
-  const [salesPrice, setSalesPrice] = useState("");
+  const [salesPrice, setSalesPrice] = useState();
   const [profit, setProfit] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (purchasePrice && salesPrice) {
       setProfit(salesPrice - purchasePrice);
+    } else {
+      setProfit("");
     }
   }, [purchasePrice, salesPrice]);
 
+  const formValidate = () => {
+    let newError = "";
+    if (!name) {
+      newError = "Name is required!";
+    } else if (!purchasePrice) {
+      newError = "Purchase price is required!";
+    } else if (!salesPrice) {
+      newError = "Sales price is required!";
+    }
+    return newError;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", {
-      formData: {
-        name,
-        salesPrice,
-        purchasePrice,
-        profit,
-      },
-    });
+
+    const validationError = formValidate();
+
+    if (validationError) {
+      setError(validationError);
+    } else {
+      onSubmit({ name, salesPrice, purchasePrice, profit });
+      setName("");
+      setPurchasePrice("");
+      setSalesPrice("");
+      setProfit("");
+      setError("");
+    }
   };
 
   return (
@@ -91,7 +110,6 @@ const ApplicationForm = () => {
             placeholder="Enter the name of the product"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            required
           />
         </FormField>
         <FormField>
@@ -103,7 +121,6 @@ const ApplicationForm = () => {
             placeholder="Enter the purchase price of the product"
             value={purchasePrice}
             onChange={(e) => setPurchasePrice(e.target.value)}
-            required
           />
         </FormField>
         <FormField>
@@ -115,7 +132,6 @@ const ApplicationForm = () => {
             placeholder="Enter the sales price of the product"
             value={salesPrice}
             onChange={(e) => setSalesPrice(e.target.value)}
-            required
           />
         </FormField>
         <FormField>
@@ -129,10 +145,11 @@ const ApplicationForm = () => {
             disabled
           />
         </FormField>
+        {error && <span style={{ color: "red" }}>{error}</span>}
         <Button type="submit">Submit</Button>
       </Form>
     </FormContainer>
   );
 };
 
-export default ApplicationForm;
+export default AddProductForm;
