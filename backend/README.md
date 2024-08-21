@@ -1,4 +1,4 @@
-# Interval Machine Test
+# Interval Machine Test - Backend
 
 ## Getting Started
 
@@ -8,5 +8,5 @@
 4. Install project dependencies by running `yarn`
 5. Start Docker (local Postgres and Mysql instance) `docker-compose up -d`
 6. Start development server `yarn dev`
-7. Use Postman collection `apis.postman_collection` 
+7. Use Postman collection `api_calls.postman_collection` 
 
