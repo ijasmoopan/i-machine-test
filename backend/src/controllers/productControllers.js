@@ -11,8 +11,6 @@ export const addProduct = async (req, res) => {
       salesPrice,
     });
 
-    console.log({ newProduct });
-
     const profit = salesPrice - purchasePrice;
 
     const newProfitRecord = await ProfitRecord.create({
@@ -77,3 +75,19 @@ export const getProductById = async (req, res) => {
       .json({ message: "Error fetching product", error: error.message });
   }
 };
+
+export const getProducts = async (req, res) => {
+  try {
+    const products = await Product.findAll();
+
+    res.status(200).json({
+      products
+    });
+
+  } catch(error) {
+    console.error("Error fetching products:", error);
+    res
+      .status(500)
+      .json({ message: "Error fetching products", error: error.message });
+  }
+}

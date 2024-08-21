@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { initMySQLModels } from "./models/mysql/index.js";
 import { initPostgresModels } from "./models/postgres/index.js";
 import healthRoutes from "./routes/healthRoutes.js";
@@ -8,6 +9,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 // Initialize Models
 initMySQLModels();
