@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ProductCard from "../../components/ProductCard";
+import { getProducts } from "../../services/productService";
 
 const Container = styled.div`
   display: flex;
@@ -21,19 +22,26 @@ const ProductsWrapper = styled.div`
 `;
 
 const ProductsView = () => {
-  const products = [
-    "Product 1",
-    "Product 2",
-    "Product 3",
-    "Product 4",
-    "Product 5",
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts()
+      .then((res) => setProducts(res.data?.products))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <Container>
       <h2>Products</h2>
       <ProductsWrapper>
         {products.map((product, idx) => (
-          <ProductCard key={idx} name={product} />
+          <ProductCard
+            key={idx}
+            productId={product.productId}
+            name={product.name}
+            salesPrice={product.salesPrice}
+            purchasePrice={product.purchasePrice}
+          />
         ))}
       </ProductsWrapper>
     </Container>
