@@ -1,2 +1,24 @@
 backend/.env
 backend/node_modules/
+
+# dependencies
+frontend/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+frontend/build
+
+# misc
+frontend/.DS_Store
+.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
