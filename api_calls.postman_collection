@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "0cce6c79-a220-4591-8c11-6c17777f47f2",
+		"name": "Interval-machine-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20545265",
+		"_collection_link": "https://di-chit-team.postman.co/workspace/di-chit~679a016d-3350-4e35-b169-5d054dbcd8c3/collection/20545265-0cce6c79-a220-4591-8c11-6c17777f47f2?action=share&source=collection_link&creator=20545265"
+	},
+	"item": [
+		{
+			"name": "getProductDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/productDetails/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"productDetails",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Product 3\",\r\n    \"salesPrice\": 500.00,\r\n    \"purchasePrice\": 450.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/addProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
