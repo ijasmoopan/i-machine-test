@@ -7,33 +7,34 @@ const Card = styled.div`
   background-color: #fff;
 `;
 
-const StyledTable = styled.table`
-`;
+const StyledTable = styled.table``;
 
 const StyledTRow = styled.tr``;
 
-const StyledTData = styled.td``;
+const StyledTData = styled.td`
+  padding: 7px 5px;
+`;
 
-const ProductDetailsCard = () => {
+const ProductDetailsCard = ({ productDetails }) => {
   return (
     <Card>
       <CardContent>
         <StyledTable>
           <StyledTRow>
-            <StyledTData>{'Name'}</StyledTData>
-            <StyledTData>{'Product 1'}</StyledTData>
+            <StyledTData>{"Name"}</StyledTData>
+            <StyledTData>{productDetails.name}</StyledTData>
           </StyledTRow>
           <StyledTRow>
-            <StyledTData>{'Purchase Price'}</StyledTData>
-            <StyledTData>{'Product 1'}</StyledTData>
+            <StyledTData>{"Purchase Price"}</StyledTData>
+            <StyledTData>{productDetails.purchasePrice}</StyledTData>
           </StyledTRow>
           <StyledTRow>
-            <StyledTData>{'Sales Price'}</StyledTData>
-            <StyledTData>{'Product 1'}</StyledTData>
+            <StyledTData>{"Sales Price"}</StyledTData>
+            <StyledTData>{productDetails.salesPrice}</StyledTData>
           </StyledTRow>
           <StyledTRow>
-            <StyledTData>{'Profit'}</StyledTData>
-            <StyledTData>{'Product 1'}</StyledTData>
+            <StyledTData>{"Profit"}</StyledTData>
+            <StyledTData>{productDetails.profit?.profit}</StyledTData>
           </StyledTRow>
         </StyledTable>
       </CardContent>

@@ -41,8 +41,7 @@ const ProductPriceWrapper = styled.div`
 
 const PriceTag = styled.div``;
 
-const ProductCard = ({ name, productId }) => {
-  productId = 1;
+const ProductCard = ({ name, productId, salesPrice, purchasePrice }) => {
   return (
     <Card>
       <Link to={`/products/${productId}`}>
@@ -51,11 +50,11 @@ const ProductCard = ({ name, productId }) => {
           <PriceContainer>
             <ProductPriceWrapper>
               <PriceTag>{`Purchase`}</PriceTag>
-              <PriceTag>{`${200}`}</PriceTag>
+              <PriceTag>{purchasePrice}</PriceTag>
             </ProductPriceWrapper>
             <ProductPriceWrapper>
               <PriceTag>{`Sales`}</PriceTag>
-              <PriceTag>{`${100}`}</PriceTag>
+              <PriceTag>{salesPrice}</PriceTag>
             </ProductPriceWrapper>
           </PriceContainer>
         </CardContent>

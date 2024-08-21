@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import ProductDetailsCard from "../../components/ProductDetailsCard";
+import { useEffect, useState } from "react";
+import { getProductDetailsById } from "../../services/productService";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -22,11 +25,21 @@ const CardWrapper = styled.div`
 `;
 
 const ProductDetails = () => {
+  const { id } = useParams();
+
+  const [productDetails, setProductDetails] = useState([]);
+
+  useEffect(() => {
+    getProductDetailsById(id)
+      .then((res) => setProductDetails(res.data?.product))
+      .catch((error) => console.error(error));
+  }, [id]);
+
   return (
     <Container>
       <CardWrapper>
         <h2>Product Details</h2>
-        <ProductDetailsCard />
+        <ProductDetailsCard productDetails={productDetails} />
       </CardWrapper>
     </Container>
   );
